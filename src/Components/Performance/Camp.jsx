@@ -57,6 +57,7 @@ export default function Camp() {
 
     return (
         <>
+        {/* <h1>hello faii</h1> */}
             <Navbar />
             <div className="bg-gradient-to-r md:h-auto font-title from-black to-blue-950">
                 <div className="flex flex-col justify-center items-center text-white max-w-7xl m-auto p-12 h-full transition-all duration-500">
