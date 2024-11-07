@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faGithub, faLine } from '@fortawesome/free-brands-svg-icons';
-import myImage from '/Users/verawood/Desktop/PortFolio Website/src/assets/Img1.jpg';
+import myImage from '../img-main/img1/MainPage.jpg';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
