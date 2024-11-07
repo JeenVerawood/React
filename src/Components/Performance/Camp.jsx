@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Window/Footer';
-import { FaSearchPlus } from 'react-icons/fa'; // Import icon from react-icons
+import { FaSearchPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Img1 from '../img-main/cetificate/123.png';
 import Img2 from '../img-main/cetificate/11231231.png';
 import Img3 from '../img-main/cetificate/tala.jpg';
@@ -26,24 +26,37 @@ const contentBlocks = [
 
 export default function Camp() {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(null);
 
-    const openModal = (imageSrc) => setSelectedImage(imageSrc);
-    const closeModal = () => setSelectedImage(null);
+    const openModal = (imageSrc, index) => {
+        setSelectedImage(imageSrc);
+        setCurrentIndex(index);
+    };
+    
+    const closeModal = () => {
+        setSelectedImage(null);
+        setCurrentIndex(null);
+    };
 
-    // Prevent background scroll when modal is open
+    const goToNextImage = () => {
+        const nextIndex = currentIndex === contentBlocks.length - 1 ? 0 : currentIndex + 1;
+        setCurrentIndex(nextIndex);
+        setSelectedImage(contentBlocks[nextIndex].imageSrc);
+    };
+
+    const goToPrevImage = () => {
+        const prevIndex = currentIndex === 0 ? contentBlocks.length - 1 : currentIndex - 1;
+        setCurrentIndex(prevIndex);
+        setSelectedImage(contentBlocks[prevIndex].imageSrc);
+    };
+
     useEffect(() => {
-        if (selectedImage) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-        
+        document.body.style.overflow = selectedImage ? 'hidden' : 'auto';
         return () => {
             document.body.style.overflow = 'auto';
         };
     }, [selectedImage]);
 
-    // Add event listener for ESC key
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Escape') {
@@ -51,19 +64,18 @@ export default function Camp() {
             }
         };
         window.addEventListener('keydown', handleKeyDown);
-        
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
     return (
         <>
-        {/* <h1>hello faii</h1> */}
+       
             <Navbar />
             <div className="bg-gradient-to-r md:h-auto font-title from-black to-blue-950">
                 <div className="flex flex-col justify-center items-center text-white max-w-7xl m-auto p-12 h-full transition-all duration-500">
                     <div className="flex justify-center gap-x-3 items-center">
                         <div className="w-2 h-2 bg-white rotate-45"></div>
-                        <h1 className="text-3xl font-bold transition-opacity text-center duration-500">OTHER</h1>
+                        <h1 className="text-3xl font-bold transition-opacity text-center duration-500">COMPUTER ACHIEVEMENTS</h1>
                         <div className="w-2 h-2 bg-white rotate-45"></div>
                     </div>
                     <div className="text-center mb-10">
@@ -75,8 +87,8 @@ export default function Camp() {
                                 <div className="w-full h-60 bg-white overflow-hidden relative bg-black group hover:opacity-80 duration-500">
                                     <img src={block.imageSrc} alt={block.title} className="w-full h-full object-cover" />
                                     <div 
-                                        className="absolute bottom-3 right-3 text-white text-xl bg-gray-900 p-3 rounded-full opacity-0 group-hover:opacity-100 border-2 border-white   duration-300 cursor-pointer"
-                                        onClick={() => openModal(block.imageSrc)}
+                                        className="absolute bottom-3 right-3 text-white text-xl bg-gray-900 p-3 rounded-full opacity-0 group-hover:opacity-100 border-2 border-white duration-300 cursor-pointer"
+                                        onClick={() => openModal(block.imageSrc, index)}
                                     >
                                         <FaSearchPlus />
                                     </div>
@@ -94,14 +106,28 @@ export default function Camp() {
             </div>
             {selectedImage && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center">
-                    <div className="relative">
+                    <div className="relative max-w-7xl">
                         <button 
                             onClick={closeModal} 
-                            className="absolute top-3 right-20 mr-20 text-white text-2xl bg-black/60 px-2 items-center rounded-full focus:outline-none"
+                            className="absolute top-5 right-5 text-white text-2xl bg-black/60 px-2 py-1 rounded-full focus:outline-none"
+                            aria-label="Close modal"
                         >
                             &times;
                         </button>
-                        <img src={selectedImage} alt="Enlarged" className="max-w-[70%] max-h-[70%] m-auto rounded-lg shadow-lg" />
+                        <img src={selectedImage} alt="Enlarged" className="max-w-[80%] max-h-[80%] m-auto rounded-lg shadow-lg" />
+                        <div className="text-center text-white mt-4">
+                            <p>{contentBlocks[currentIndex].description}</p>
+                        </div>
+                        <div className="absolute top-1/2 left-5 transform -translate-y-1/2">
+                            <button onClick={goToPrevImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
+                                <FaArrowLeft />
+                            </button>
+                        </div>
+                        <div className="absolute top-1/2 right-5 transform -translate-y-1/2">
+                            <button onClick={goToNextImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
+                                <FaArrowRight />
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Window/Footer';
-import { FaSearchPlus } from 'react-icons/fa';
+import { FaSearchPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import Img1 from '../img-main/cetificate/DDD.png'; 
 import Img2 from '../img-main/cetificate/CamScanner 26-08-2566 21.30_2.jpg';
@@ -119,9 +119,29 @@ const contentBlocks = [
 
 export default function Technology() {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(null);
+
+    const openModal = (imageSrc, index) => {
+        setSelectedImage(imageSrc);
+        setCurrentIndex(index);
+    };
     
-    const openModal = (imageSrc) => setSelectedImage(imageSrc);
-    const closeModal = () => setSelectedImage(null);
+    const closeModal = () => {
+        setSelectedImage(null);
+        setCurrentIndex(null);
+    };
+
+    const goToNextImage = () => {
+        const nextIndex = currentIndex === contentBlocks.length - 1 ? 0 : currentIndex + 1;
+        setCurrentIndex(nextIndex);
+        setSelectedImage(contentBlocks[nextIndex].imageSrc);
+    };
+
+    const goToPrevImage = () => {
+        const prevIndex = currentIndex === 0 ? contentBlocks.length - 1 : currentIndex - 1;
+        setCurrentIndex(prevIndex);
+        setSelectedImage(contentBlocks[prevIndex].imageSrc);
+    };
 
     useEffect(() => {
         document.body.style.overflow = selectedImage ? 'hidden' : 'auto';
@@ -160,7 +180,7 @@ export default function Technology() {
                                     <img src={block.imageSrc} alt={block.title} className="w-full h-full object-cover" />
                                     <div 
                                         className="absolute bottom-3 right-3 text-white text-xl bg-gray-900 p-3 rounded-full opacity-0 group-hover:opacity-100 border-2 border-white duration-300 cursor-pointer"
-                                        onClick={() => openModal(block.imageSrc)}
+                                        onClick={() => openModal(block.imageSrc, index)}
                                     >
                                         <FaSearchPlus />
                                     </div>
@@ -179,17 +199,30 @@ export default function Technology() {
 
             {selectedImage && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center">
-                    <div className="relative">
-                        <button 
-                            onClick={closeModal} 
-                            className="absolute top-3 right-20 mr-20 text-white text-2xl bg-black/60 px-2 items-center rounded-full focus:outline-none"
-                            aria-label="Close modal"
-                        >
-                            &times;
+                <div className="relative max-w-7xl">
+                    <button 
+                        onClick={closeModal} 
+                        className="absolute top-5 right-5 text-white text-2xl bg-black/60 px-2 py-1 rounded-full focus:outline-none"
+                        aria-label="Close modal"
+                    >
+                        &times;
+                    </button>
+                    <img src={selectedImage} alt="Enlarged" className="max-w-[80%] max-h-[80%] m-auto rounded-lg shadow-lg" />
+                    <div className="text-center text-white mt-4">
+                        <p>{contentBlocks[currentIndex].description}</p>
+                    </div>
+                    <div className="absolute top-1/2 left-5 transform -translate-y-1/2">
+                        <button onClick={goToPrevImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
+                            <FaArrowLeft />
                         </button>
-                        <img src={selectedImage} alt="Enlarged" className="max-w-[70%] max-h-[70%] m-auto rounded-lg shadow-lg" />
+                    </div>
+                    <div className="absolute top-1/2 right-5 transform -translate-y-1/2">
+                        <button onClick={goToNextImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
+                            <FaArrowRight />
+                        </button>
                     </div>
                 </div>
+            </div>
             )}
             <Footer />
         </>

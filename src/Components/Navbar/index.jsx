@@ -79,6 +79,10 @@ export default function Navbar() {
                                         <GoProjectRoadmap />
                                         PROJECT
                                     </Link>
+                                    <Link to="/Design" className="block px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
+                                        <MdCastForEducation />
+                                        DESIGN
+                                    </Link>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -116,13 +120,13 @@ export default function Navbar() {
                             )}
                         </AnimatePresence>
                     </div>
-                    <Link to="/Contact" className=" bg-white text-black hover:bg-gray-700 px-5   py-1 rounded-full transition">
+                    <Link to="/Contact" className=" bg-white text-black hover:bg-gray-400 duration-300 px-5 py-1 rounded-full transition">
                         CONTACT
                     </Link>
                 </div>
 
                 {/* Mobile Menu Icon */}
-                <div className="md:hidden flex items-center">
+                <div className="md:hidden flex items-center mr-6">
                     <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                         {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </button>
@@ -154,6 +158,10 @@ export default function Navbar() {
                                     <Link to="/Myproject" className="px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
                                         <GoProjectRoadmap />
                                         PROJECT
+                                    </Link>
+                                    <Link to="/Design" className="block px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
+                                        <MdCastForEducation />
+                                        DESIGN
                                     </Link>
                                 </div>
                             )}

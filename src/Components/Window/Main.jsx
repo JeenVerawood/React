@@ -85,12 +85,12 @@ export default function Main() {
                     <FontAwesomeIcon icon={faFacebook} size="2x" />
                   </button>
                 </a>
-                <a href="https://github.com/yourgithubprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/JeenVerawood" target="_blank" rel="noopener noreferrer">
                   <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faGithub} size="2x" />
                   </button>
                 </a>
-                <a href="https://line.me/yourlineprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://line.me/ti/p/PVnlFqB1tZ" target="_blank" rel="noopener noreferrer">
                   <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faLine} size="2x" />
                   </button>
