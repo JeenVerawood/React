@@ -1,16 +1,48 @@
 import React from 'react'; 
 import Navbar from '../Navbar';
+import Footer from '../Window/Footer';
+import img1 from '../img-main/design-igm/4E456147-47DB-4658-9444-8ECBC7502960_1_105_c.jpeg'
+import img2 from '../img-main/design-igm/64F0C15E-8CFD-4090-B092-F8115C81853F_1_105_c.jpeg'
+import img3 from '../img-main/design-igm/A21851D2-183A-42B2-8EC4-D1D954D350E7_1_105_c.jpeg'
+import img4 from '../img-main/design-igm/A51D098F-817E-4CEE-9866-177988158207_1_105_c.jpeg'
+import img5 from '../img-main/design-igm/1.png'
+import img6 from '../img-main/design-igm/2.png'
+import img7 from '../img-main/design-igm/3.png'
 
 const cardData = [
   {
-    title: "TAWEETHAPISEK",
+    title: "TAWEETHAPISEK FESTIVAL 1 ST ",
     description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
-    image: ""  // ใส่ path ของรูปภาพตรงนี้
+    image: img2  // ใส่ path ของรูปภาพตรงนี้
+  },
+  {
+    title: "TAWEETHAPISEK FESTIVAL 3 ST ",
+    description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
+    image: img1  // ใส่ path ของรูปภาพตรงนี้
+  },
+  {
+    title: "STAFF SPORT DAY ",
+    description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
+    image: img5  // ใส่ path ของรูปภาพตรงนี้
+  },  
+  {
+    title: "STAFF SPORT DAY V1 ",
+    description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
+    image: img3  // ใส่ path ของรูปภาพตรงนี้
+  },
+  {
+    title: "STAFF SPORT DAY V2",
+    description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
+    image: img4  // ใส่ path ของรูปภาพตรงนี้
   },
   {
     title: "TAWEETHAPISEK",
     description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
-    image: ""  // ใส่ path ของรูปภาพตรงนี้
+    image: img6  // ใส่ path ของรูปภาพตรงนี้
+  },  {
+    title: "TAWEETHAPISEK",
+    description: "Lorsectetur adipisicing elit. Incidunt corporis distinctio pariatur recusandae? Harum praesentium, molliti",
+    image: img7   // ใส่ path ของรูปภาพตรงนี้
   },
   // เพิ่มข้อมูลการ์ดอื่นๆ ตามต้องการ
 ];
@@ -49,6 +81,7 @@ function Design() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
