@@ -17,10 +17,15 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > lastScrollY) {
-                setIsVisible(false);
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                if (window.scrollY > lastScrollY) {
+                    setIsVisible(false);
+                } else {
+                    setIsVisible(true);
+                }
             } else {
-                setIsVisible(true);
+                setIsVisible(true); // Always visible on mobile
             }
             lastScrollY = window.scrollY;
         };
@@ -190,10 +195,9 @@ export default function Navbar() {
                                 </div>
                             )}
                         </div>
-                        <Link to="/Contact" className="  text-white hover:bg-gray-700 px-5 py-1 rounded-full transition">
+                        <Link to="/Contact" className=" bg-white text-black hover:bg-gray-400 duration-300 px-5 py-1 rounded-full transition">
                             CONTACT
                         </Link>
-
                     </div>
                 )}
             </nav>
