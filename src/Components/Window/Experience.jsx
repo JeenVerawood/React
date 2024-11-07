@@ -89,6 +89,11 @@ export default function Experience() {
                         className='p-2 w-full md:w-36 h-12 flex justify-center items-center bg-gray-900 border-2 border-gray-400 hover:scale-105 duration-400 transition-all'>
                         OTHER
                     </button>
+                    <button 
+                        onClick={() => handleNavigation('/Design')} 
+                        className='p-2 w-full md:w-36 h-12 flex justify-center items-center bg-gray-900 border-2 border-gray-400 hover:scale-105 duration-400 transition-all'>
+                        DESIGN
+                    </button>
                 </div>
 
             </div>

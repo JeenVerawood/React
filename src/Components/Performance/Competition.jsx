@@ -224,6 +224,7 @@ export default function Technology() {
                 </div>
             </div>
             )}
+            
             <Footer />
         </>
     );
