@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import img1sec1 from "../img-main/img1/1.png";
-import img1sec2 from "../img-main/img3/1.png";
-import img1sec3 from "../img-main/img4/3.png";
+// import img1sec1 from "../img-main/img1/1.png";
+// import img1sec2 from "../img-main/img3/1.png";
+// import img1sec3 from "../img-main/img4/3.png";
+// import Img1 from "../img-main/img1/Img1.png";
 import {useNavigate } from "react-router-dom";
-import Img1 from "../img-main/img1/Img1.png";
 
 export default function Experience() {
     const contactRef = useRef(null);
@@ -52,25 +52,25 @@ export default function Experience() {
                 <div className='flex flex-wrap justify-center items-center gap-y-4 mt-12'>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
-                            <img src={Img1} alt="" className='w-64 h-64 bg-white'/>
+                            {/* <img src={Img1} alt="" className='w-64 h-64 bg-white'/> */}
                         </div>
                         <p className='text-center mt-2 text-white'>Participate in research skills training at NSTDA at the NECTEC Center for 2 months.</p>
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
-                            <img src={img1sec1} alt="" className='w-64 h-64 bg-white'/>
+                            {/* <img src={img1sec1} alt="" className='w-64 h-64 bg-white'/> */}
                         </div>
                         <p className='text-center mt-2 text-white'>Medal award from the regional SMTE project competition using the ARDUINO board.</p>
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
-                            <img src={img1sec2} alt="" className='w-64 h-64 bg-white'/>
+                            {/* <img src={img1sec2} alt="" className='w-64 h-64 bg-white'/> */}
                         </div>
                         <p className='text-center mt-2 text-white'>Silver Medal in the Arts and Crafts Competition in the Mixed Robot Competition.</p>
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
-                            <img src={img1sec3} alt="" className='w-64 h-64 bg-white'/>
+                            {/* <img src={img1sec3} alt="" className='w-64 h-64 bg-white'/> */}
                         </div>
                         <p className='text-center mt-2 text-white'>Passed entry into the Junior Web Master Camp project, design category.</p>
                     </div>
