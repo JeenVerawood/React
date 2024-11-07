@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import img1sec1 from "../img-main/img1/1.png";
 import img1sec2 from "../img-main/img3/1.png";
 import img1sec3 from "../img-main/img4/3.png";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import Img1 from "../img-main/img1/Img1.png";
 
 export default function Experience() {
