@@ -1,82 +1,54 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '../Navbar';
 import Footer from './Footer';
 
 export default function Document() {
-    const contactRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const [rotation1, setRotation1] = useState(0); // For first icon rotation
-    const [rotation2, setRotation2] = useState(0); // For second icon rotation
-    const [dropdownOpen1, setDropdownOpen1] = useState(false); // Dropdown for first button
-    const [dropdownOpen2, setDropdownOpen2] = useState(false); // Dropdown for second button
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-
-            // Update rotation based on the scroll position
-            setRotation1(scrollPosition * 0.2); // Adjust rotation speed as needed
-            setRotation2(scrollPosition * 0.2);
-
-            const { top, height } = contactRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (top < windowHeight && top + height > 0) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     return (
         <>
-        <Navbar />
-        <div className='bg-gradient-to-r font-title from-black to-blue-950 h-'>
-            <div 
-                ref={contactRef} 
-                className={`flex flex-col justify-center items-center text-white max-w-7xl m-auto p-12 transition-all min-h-screen md:h-auto duration-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-            >   
-                <div className='flex items-center gap-x-3'>
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
-                    <h1 className='text-3xl font-bold transition-opacity text-center duration-500'>OTHER DOCUMENTS</h1>
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
-                </div>
-                <h5 className='mt-5'>SUB HEADING GOES HERE</h5>
-                <div className='flex gap-x-2 w-full'>
-                <div className='flex bg-black p-10 w-full '>
-                        <div className='w-72 bg-white h-96'>
-                            <img src="" alt="" />
+            <Navbar />
+            <div className='bg-gradient-to-r from-gray-900 to-blue-950 min-h-screen font-title text-white'>
+                <div className="flex flex-col items-center max-w-7xl mx-auto p-12 transition-all duration-500 transform">
+                    {/* Page Header */}
+                    <div className='flex items-center gap-x-3 mb-8'>
+                        <div className='w-2 h-2 bg-white rotate-45'></div>
+                        <h1 className='text-4xl font-bold text-center'>DOCUMENTS</h1>
+                        <div className='w-2 h-2 bg-white rotate-45'></div>
+                    </div>
+                    <h5 className='text-lg font-light mb-12'>Explore various documents and certifications</h5>
+
+                    {/* Document Cards Container */}
+                    <div className='flex  gap-4 justify-center'>
+                        {/* Document Card - Study Documents */}
+                        <div className='flex w-full md:w-1/2 items-center bg-black p-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105'>
+                            <div className='w-[210px] h-[297px] md:w-[300px] md:h-[420px] bg-white rounded-lg overflow-hidden mr-8'>
+                                <img src="" alt="Document Preview" className='w-full h-full object-cover' />
+                            </div>
+                            <div>
+                                <h1 className='text-2xl mb-2'>Study Documents</h1>
+                                <hr className='border-gray-600 mb-2' />
+                                <p className='text-gray-300 text-sm mb-1'>Detail 1 about the study documents</p>
+                                <p className='text-gray-300 text-sm mb-1'>Detail 2 about the study documents</p>
+                                <p className='text-gray-300 text-sm'>Detail 3 about the study documents</p>
+                            </div>
                         </div>
-                        <div>
-                            <h1 className='text-2xl'>asdasd</h1>
-                            <hr />
-                            <h1>asdasasasd</h1>
-                            <h1>asdasasasd</h1>
-                            <h1>asdasasasd</h1>
+
+                        {/* Document Card - Certifications */}
+                        <div className='flex w-full md:w-1/2 items-center bg-black p-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105'>
+                            <div className='w-[210px] h-[297px] md:w-[300px] md:h-[420px] bg-white rounded-lg overflow-hidden mr-8'>
+                                <img src="" alt="Certification Preview" className='w-full h-full object-cover' />
+                            </div>
+                            <div>
+                                <h1 className='text-2xl mb-2'>Certifications</h1>
+                                <hr className='border-gray-600 mb-2' />
+                                <p className='text-gray-300 text-sm mb-1'>Detail 1 about the certification</p>
+                                <p className='text-gray-300 text-sm mb-1'>Detail 2 about the certification</p>
+                                <p className='text-gray-300 text-sm'>Detail 3 about the certification</p>
+                            </div>
                         </div>
-                </div>
-                <div className='flex bg-black p-10 w-full '>
-                        <div className='w-72 bg-white h-96'>
-                            <img src="" alt="" />
-                        </div>
-                        <div>
-                            <h1 className='text-2xl'>asdasd</h1>
-                            <hr />
-                            <h1>asdasasasd</h1>
-                            <h1>asdasasasd</h1>
-                            <h1>asdasasasd</h1>
-                        </div>
-                </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <Footer />
+            <Footer />
         </>
     );
 }
