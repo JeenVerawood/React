@@ -11,6 +11,7 @@ import Myproject from './Components/Performance/Myproject.jsx';
 import Competiton from "./Components/Performance/Competition";
 import Design from "./Components/Performance/Design.jsx";
 import Contact from '../src/Components/About/contact.jsx';
+import Document from './Components/Window/Document.jsx';
 
 import './index.css';
 import {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "Design", // เพิ่มเส้นทางสำหรับหน้า Design
     element: <Design />
+  },
+  {
+    path: "Document",
+    element: <Document />
   }
 ]);
 
