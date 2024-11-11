@@ -41,13 +41,13 @@ export default function Navbar() {
             <nav className="flex justify-between items-center text-white py-4 px-5 max-w-7xl mx-auto">
                 {/* Logo Section */}
                 <div className="flex items-center px-6">
-                    <div className="flex items-center">
-                        <div className="w-6 h-6 bg-white flex items-center justify-center mr-2  rounded-full text-gray-900">
+                    <Link to="/" className="flex items-center" >
+                    <div className="w-6 h-6 bg-white flex items-center justify-center mr-2  rounded-full text-gray-900">
                             <TiUser />
                         </div>
                         <MdKeyboardDoubleArrowRight className="mr-3"/>
                         <h1 className="text-2xl font-bold">PORTFOLIO</h1>
-                    </div>
+                    </Link>
                 </div>
 
                 {/* Desktop Menu */}
