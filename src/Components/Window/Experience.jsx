@@ -63,18 +63,21 @@ export default function Experience() {
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
+                        <img src={img1} alt="" className='w-64 h-64 bg-white'/>
                            
                         </div>
                         <p className='text-center mt-2 text-white'>Medal award from the regional SMTE project competition using the ARDUINO board.</p>
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
+                        <img src={img1} alt="" className='w-64 h-64 bg-white'/>
 
                         </div>
                         <p className='text-center mt-2 text-white'>Silver Medal in the Arts and Crafts Competition in the Mixed Robot Competition.</p>
                     </div>
                     <div className='h-92 w-72 mr-2 flex border-2 border-gray-400 flex-col items-center p-4 hover:scale-110 transition-all duration-500'>
                         <div className='border-2 border-gray-400 '>
+                        <img src={img1} alt="" className='w-64 h-64 bg-white'/>
 
                         </div>
                         <p className='text-center mt-2 text-white'>Passed entry into the Junior Web Master Camp project, design category.</p>
