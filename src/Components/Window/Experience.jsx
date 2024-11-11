@@ -1,17 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import img1 from "../img-main/img1/1.png"
-import img2 from "../img-main/img1/2.png"
-import img3 from "../img-main/img1/3.png"
-import img4 from "../img-main/img1/4.png"
+import img1 from "../Performance/img1/1.png"
+import img2 from "../Performance/img1/2.png"
+import img3 from "../Performance/img1/3.png"
+import img4 from "../Performance/img1/4.png"
 
-
-
-
-
-// import img1sec1 from "../img-main/img1/1.png";
-// import img1sec2 from "../img-main/img3/1.png";
-// import img1sec3 from "../img-main/img4/3.png";
-// import img1 from "../img-main/img1/Img1.png";
 import {useNavigate } from "react-router-dom"; 
 
 export default function Experience() {
