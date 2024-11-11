@@ -88,10 +88,6 @@ export default function Navbar() {
                                         <MdCastForEducation />
                                         DESIGN
                                     </Link>
-                                    <Link to="/Document" className="block px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
-                                        <MdCastForEducation />
-                                        DOCUMENT
-                                    </Link>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -171,10 +167,6 @@ export default function Navbar() {
                                     <Link to="/Design" className="block px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
                                         <MdCastForEducation />
                                         DESIGN
-                                    </Link>
-                                    <Link to="/Document" className="block px-4 py-2 text-white flex items-center gap-x-2 hover:bg-gray-700">
-                                        <MdCastForEducation />
-                                        DOCUMENT
                                     </Link>
                                 </div>
                             )}
