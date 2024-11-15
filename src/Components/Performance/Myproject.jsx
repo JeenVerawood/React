@@ -4,6 +4,9 @@ import img1 from '../img-main/project /1.png';
 import img2 from '../img-main/project /2.png';
 import img3 from '../img-main/project /3.png';
 import imgTT from '../img-main/project /wahasdasd.png';
+import imgSMTE from '../img-main/cetificate/701ab753-8598-4b9e-b049-5d404f345737.jpeg'
+
+
 
 export default function Myproject() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -35,10 +38,13 @@ export default function Myproject() {
                 <div className="flex flex-col justify-center items-center text-white max-w-7xl mx-auto p-6 md:p-12 transition-all duration-500">
                     <div className="flex items-center mb-8">
                         <div className="w-2 h-2 bg-white rotate-45"></div>
-                        <h1 className="text-3xl md:text-4xl font-bold mx-4">PROJECT</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold mx-4">PROJECT</h1>di
                         <div className="w-2 h-2 bg-white rotate-45"></div>
                     </div>
                     <h5 className="text-base md:text-lg mb-10 text-center">SUB HEADING GOES HERE</h5>
+                    <div>
+                        <img src={imgSMTE}  />
+                    </div>
                     <div className="flex flex-col md:flex-row w-full items-center justify-between bg-gray-800 p-6 rounded-lg shadow-lg">
                         <div className="mb-4 md:mb-0">
                             <img
