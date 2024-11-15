@@ -43,7 +43,7 @@ export default function Myproject() {
                     </div>
                     <h5 className="text-base md:text-lg mb-10 text-center">SUB HEADING GOES HERE</h5>
                     <div>
-                        <img src={imgSMTE}  />
+                        <img src={imgSMTE}  className='w-full h-full'/>
                     </div>
                     <div className="flex flex-col md:flex-row w-full items-center justify-between bg-gray-800 p-6 rounded-lg shadow-lg">
                         <div className="mb-4 md:mb-0">
