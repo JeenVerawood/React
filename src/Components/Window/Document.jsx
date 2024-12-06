@@ -18,7 +18,6 @@ export default function Document() {
 
                     {/* Document Cards Container */}
                     <div className='flex  gap-4 justify-center'>
-                        {/* Document Card - Study Documents */}
                         <div className='flex w-full md:w-1/2 items-center bg-black p-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105'>
                             <div className='w-[210px] h-[297px] md:w-[300px] md:h-[420px] bg-white rounded-lg overflow-hidden mr-8'>
                                 <img src="" alt="Document Preview" className='w-full h-full object-cover' />

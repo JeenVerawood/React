@@ -66,7 +66,7 @@ export default function Lorem() {
                         },
                         {
                             icon: <TbWorldCode className='m-auto my-10 text-9xl' />,
-                            text: "Studying computer science enables me to pursue a successful and stable career, while also contributing positively to the nation."
+                            text: "Studying about computer  enables me to pursue a successful and stable career, while also contributing positively to the nation."
                         }
                     ].map((item, index) => (
                         <div key={index} className={`flex-1 text-center border-2 border-gray-400 p-4 transition-opacity duration-500 ${isVisible ? 'opacity-100 delay-' + (400 + index * 200) : 'opacity-0'} mx-2`}>
