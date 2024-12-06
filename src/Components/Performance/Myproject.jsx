@@ -69,7 +69,7 @@ export default function Myproject() {
                         <h2 className="text-xl md:text-2xl font-semibold mb-4">Result Images</h2>
                         <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-4">
                             <img
-                                src={img1}
+                                src={img1}``
                                 alt="Project Image 1"
                                 className="w-full md:w-80 h-auto border-2 border-gray-400 rounded-lg shadow-md hover:scale-105 transition-transform duration-300 cursor-pointer"
                                 onClick={() => openModal(img1)}
