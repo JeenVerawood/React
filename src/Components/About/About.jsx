@@ -29,7 +29,7 @@ export default function About() {
                         </div>
                         <div className="border-2 border-gray-400 p-4">
                             <h2 className="font-bold mb-2">Age</h2>
-                            <p>17 Years</p>
+                            <p>18 Years</p>
                         </div>
                         <div className="border-2 border-gray-400 p-4">
                             <h2 className="font-bold mb-2">Birthday</h2>
@@ -57,7 +57,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
             <div className='bg-gradient-to-r font-title from-black to-blue-950'>
                 <div className="flex flex-col justify-center items-center h-full text-white max-w-7xl m-auto p-12 h-screen transition-all duration-500">
                     <div className='flex justify-center gap-x-3 items-center'>

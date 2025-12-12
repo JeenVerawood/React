@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faGithub, faLine } from '@fortawesome/free-brands-svg-icons';
 import myImage from '../img-main/img1/MainPage.jpg';
+import { FaAngleDown } from "react-icons/fa";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
@@ -63,18 +64,36 @@ export default function Main() {
         {!isMobile && (
           <div className="w-2/4 h-[92%] flex items-center mb-12">
             <div>
-              <h1 className='text-4xl font-bold'>Hi My name is!</h1>
-              <h4 className='text-5xl font-bold mt-3'>Verawood Langvong</h4>
-              <h6 className='mt-5'>Thank you for visiting. Please explore to </h6>
-              <h6>earn more about my work and background.</h6>
-              <Link to="About" className="flex items-center mt-2">
-                <button className="mt-5 bg-white text-black px-4 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
-                  <span className="mr-2">ABOUT ME</span>
-                  <FontAwesomeIcon icon={faArrowRight} />
-                </button>
-              </Link>
-              <h6 className='mt-9'>My social</h6>
-              <div className='flex gap-5'>
+              <h1 className='text-4xl font-title'>Hi My name is!</h1>
+              <h4 className='text-5xl font-title mt-3'>Verawood Langvong</h4>
+              <h6 className='mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
+              <h6>A fast learner committed to building high-quality web solutions.</h6>
+              <h6>Ready to adapt and bring my best to Company as an intern.</h6>
+              <div className='flex'>
+                <a 
+                href=""
+                download=""
+                className="flex items-center mt-2"
+                >
+                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                    <span className="mr-2">RESUME</span>
+                    <FaAngleDown />
+                  </button>
+                </a>
+                {/* <Link to="About" className="flex items-center mt-2">
+                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                    <span className="mr-2">RESUME</span>
+                    <FaAngleDown />
+                  </button>
+                </Link> */}
+                <Link to="About" className="flex items-center mt-2 ml-4 ">
+                  <button className="mt-5  border- border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
+                    <span className="mr-2">ABOUT ME</span>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                </Link>
+              </div>
+              <div className='flex mt-2 gap-5'>
                 <a href="https://www.instagram.com/febj_222/" target="_blank" rel="noopener noreferrer">
                   <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faInstagram} size="2x" />
@@ -102,10 +121,11 @@ export default function Main() {
         {(isMobile) && (
           <div className="flex flex-col justify-center items-center h-screen">
             <div className="text-center mb-5">
-              <h1 className='text-4xl font-bold'>Hi My name is!</h1>
-              <h4 className='text-5xl font-bold mt-3'>Verawood Langvong</h4>
-              <h6 className='mt-5'>"Thank you for visiting my website."</h6>
-              <h6>Feel free to explore everything about me on this site."</h6>
+              <h1 className='text-4xl font-title'>Hi My name is!</h1>
+              <h4 className='text-5xl font-title mt-3'>Verawood Langvong</h4>
+              <h6 className='mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
+              <h6>A fast learner committed to building high-quality web solutions.</h6>
+              <h6>Ready to adapt and bring my best to Company as an intern.</h6>
             </div>
             <Link to="About" className="flex items-center justify-center w-full">
               <button className="bg-white text-black px-4 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
@@ -126,7 +146,7 @@ export default function Main() {
               style={{ transform: `rotate(${rotation2}deg)` }}
             ></div>
             <div className="Boxciecleimg w-96 h-96 bg-neutral-500 rounded-full overflow-hidden ">
-              <img src={myImage} alt="My Image" className="w-full h-full object-cover" />
+              {/* <img src={myImage} alt="My Image" className="w-full h-full object-cover" /> */}
             </div>
           </div>
         )}
