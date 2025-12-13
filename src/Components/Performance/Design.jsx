@@ -1,6 +1,6 @@
-import React, { useState } from 'react'; 
-import Navbar from '../Navbar';
-import Footer from '../Window/Footer';
+import React, { useState, useEffect, useRef } from 'react'; 
+import Navbar from '../Navbar'; // เพิ่มการ Import Navbar
+import Footer from '../Window/Footer'; // เพิ่มการ Import Footer
 import img1 from '../img-main/design-igm/4E456147-47DB-4658-9444-8ECBC7502960_1_105_c.jpeg';
 import img2 from '../img-main/design-igm/64F0C15E-8CFD-4090-B092-F8115C81853F_1_105_c.jpeg';
 import img3 from '../img-main/design-igm/A21851D2-183A-42B2-8EC4-D1D954D350E7_1_105_c.jpeg';
@@ -49,86 +49,83 @@ const cardData = [
   },
 ];
 
-function Design() {
+export default function Design() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  // Function to open the modal
   const openModal = (image) => {
     setCurrentImage(image);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling
+    document.body.style.overflow = 'hidden';
   };
   
-  // Function to close the modal
   const closeModal = () => {
     setIsModalOpen(false);
     setCurrentImage(null);
-    document.body.style.overflow = 'auto'; // Enable scrolling
-  };
-  
-
-  // Handle Esc key press
-  const handleKeyDown = (event) => {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
+    document.body.style.overflow = 'auto';
   };
 
-  // Add event listener on mount and cleanup on unmount
-  React.useEffect(() => {
-    if (isModalOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.removeEventListener('keydown', handleKeyDown);
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isModalOpen]);
+  useEffect(() => {
+    setIsVisible(true);
+    const handleKeyDown = (e) => { if (e.key === 'Escape') closeModal(); };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-r md:h-auto font-title from-black to-blue-950">
-        <div className="flex flex-col justify-center items-center text-white max-w-7xl m-auto p-12 h-full transition-all duration-500">
-          <div className="flex justify-center gap-x-3 items-center">
-            <div className="w-2 h-2 bg-white rotate-45"></div>
-            <h1 className="text-3xl font-bold transition-opacity text-center duration-500">
-                DESIGN
-            </h1>
-            <div className="w-2 h-2 bg-white rotate-45"></div>
+      <div className="bg-gray-900 min-h-screen font-title text-white">
+        <div 
+          ref={sectionRef}
+          className={`max-w-7xl m-auto px-6 py-20 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          {/* Header Section */}
+          <div className="flex flex-col items-center mb-16">
+            <div className="flex justify-center gap-x-3 items-center">
+              <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
+              <h1 className="text-3xl md:text-4xl font-bold uppercase text-center">
+                  Graphic Design
+              </h1>
+              <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
+            </div>
+            <p className="mt-4 text-gray-400 ext-xs md:text-sm uppercase text-center">
+                Award-winning merchandise and visual branding
+            </p>
           </div>
-          <div className="text-center mb-10">
-            <h5 className="mt-3">SUB HEADING GOES HERE</h5>
-          </div>
-          {/* Layout: responsive grid with text below image on mobile */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          {/* Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {cardData.map((card, index) => (
-              <div key={index} className="w-full flex flex-col md:flex-row border-2 border-gray-400 p-4 h-auto">
-                {/* Image with hover effect */}
-                <div className="relative w-full md:w-3/6 h-64 bg-white hover:opacity-70 duration-500 bg-black group">
+              <div 
+                key={index} 
+                className="group flex flex-col md:flex-row bg-gray-800/40 border border-gray-700 hover:border-sky-500 transition-all duration-500 overflow-hidden"
+              >
+                <div className="relative w-full md:w-2/5 h-64 overflow-hidden">
                   <img 
                     src={card.image} 
                     alt={card.title} 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 cursor-pointer" 
                     onClick={() => openModal(card.image)} 
                   />
-                  <div className="absolute inset-0 flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 justify-end items-end m-5">
-                    <FontAwesomeIcon 
-                      onClick={() => openModal(card.image)} // Updated to call openModal on icon click
-                      icon={faMagnifyingGlassPlus} 
-                      className="text-white text-2xl bg-gray-900 p-6 rounded-full " 
-                    />
+                  <div className="absolute inset-0 bg-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-gray-900 p-4 rounded-full border border-white/20">
+                        <FontAwesomeIcon icon={faMagnifyingGlassPlus} className="text-white text-xl" />
+                    </div>
                   </div>
                 </div>
-                {/* Card content */}
-                <div className="text-center m-auto w-full md:w-3/6">
-                  <div className="flex items-center mx-auto w-4/5 gap-x-2 justify-center">
-                    <h1 className="text-2xl font-bold">{card.title}</h1>
-                  </div>
-                  <h1 className="mt-3 w-11/12 mx-auto">{card.description}</h1>
+
+                <div className="p-8 flex flex-col justify-center flex-1 relative">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-sky-500 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"></div>
+                  <h2 className="text-lg font-bold tracking-wide uppercase group-hover:text-sky-400 transition-colors">
+                    {card.title}
+                  </h2>
+                  <div className="w-12 h-[2px] bg-gray-700 my-4 group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
+                  <p className="text-sm text-gray-400 leading-relaxed ">
+                    {card.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -136,24 +133,28 @@ function Design() {
         </div>
       </div>
 
-      {/* Modal for displaying large image */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center  justify-center z-50">
-          <div className="relative">
-            <img src={currentImage} alt="Large view" className="max-w-3xl max-h-[80vh] object-contain" />
+        <div 
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={closeModal}
+        >
+          <div className="relative max-w-4xl w-full flex flex-col items-center">
             <button 
               onClick={closeModal} 
-              className="absolute top-0 right-0 p-4 text-white text-3xl bg-black bg-opacity-50 rounded-full hover:bg-opacity-75"
+              className="absolute -top-12 right-0 md:-right-12 text-white/50 hover:text-white transition-colors"
             >
-              <FontAwesomeIcon icon={faXmark} />
+              <FontAwesomeIcon icon={faXmark} className="text-3xl" />
             </button>
+            <img 
+                src={currentImage} 
+                alt="Large view" 
+                className="max-h-[85vh] object-contain shadow-2xl border border-white/10" 
+                onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       )}
-
       <Footer />
     </>
   );
-}
-
-export default Design;
+} // <--- เพิ่มปีกกาปิดตรงนี้

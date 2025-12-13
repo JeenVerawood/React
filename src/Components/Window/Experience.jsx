@@ -14,7 +14,6 @@ export default function Experience() {
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
 
-    // ข้อมูล Experience (ปรับแก้ข้อความตรงนี้ได้เลย)
     const experiences = [
         { img: img4, text: "Participate in research skills training at NSTDA at the NECTEC Center for 2 months." },
         { img: img1, text: "Medal award from the regional SMTE project competition using the ARDUINO board." },
@@ -62,19 +61,19 @@ export default function Experience() {
     };
 
     return (
-        <div className='bg-gray-900 min-h-screen font-title py-20 flex items-center overflow-hidden'>
+        <div className='bg-gradient-to-r from-blue-950 to-black min-h-screen font-title py-20 flex items-center overflow-hidden'>
             <div 
                 ref={contactRef} 
                 className={`flex flex-col text-white max-w-7xl m-auto px-6 md:px-12 w-full transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
             >
                 {/* Header Section */}
                 <div className='flex justify-center gap-x-3 items-center'>
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
+                    <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
                     <h1 className='text-3xl md:text-4xl font-bold uppercase tracking-widest'>EXPERIENCE</h1>
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
+                    <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
                 </div>
                 <div className='text-center mt-4'>
-                    <h5 className='text-gray-400 tracking-[0.2em] text-sm md:text-base underline underline-offset-8 decoration-sky-500'>
+                    <h5 className='text-gray-400 '>
                         MY JOURNEY & ACHIEVEMENTS
                     </h5>
                 </div>
@@ -109,7 +108,7 @@ export default function Experience() {
                                         className='w-full h-56 md:h-64 object-cover bg-white group-hover/card:scale-110 transition-transform duration-700'
                                     />
                                 </div>
-                                <p className='text-center mt-6 text-gray-300 text-sm leading-relaxed min-h-[60px]'>
+                                <p className='text-center mt-6 text-gray-300 text-sm font-medium leading-relaxed min-h-[60px]'>
                                     {item.text}
                                 </p>
                             </div>
@@ -127,7 +126,7 @@ export default function Experience() {
 
                 {/* Navigation Buttons Section */}
                 <div className='m-auto mt-16 flex flex-col md:flex-row items-center gap-4'>
-                    <div className='text-lg font-bold px-8 py-3 bg-white text-black min-w-[200px] text-center uppercase tracking-tighter'>
+                    <div className='text-lg font-medium px-8 py-3 bg-white text-black min-w-[200px] text-center uppercase tracking-tighter'>
                         More Experience
                     </div>
                     <div className='flex flex-wrap justify-center gap-3'>

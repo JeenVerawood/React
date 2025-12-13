@@ -60,15 +60,15 @@ export default function Main() {
 
   return (
     <div className='bg-gradient-to-r from-black to-blue-950 font-title'>
-      <div className='flex justify-center items-center h-screen text-white max-w-7xl m-auto px-12 transition-all duration-500 transform'>
+      <div className='flex justify-center items-center h-screen max-w-7xl m-auto px-12 transition-all duration-500 transform'>
         {!isMobile && (
           <div className="w-2/4 h-[92%] flex items-center mb-12">
             <div>
-              <h1 className='text-4xl font-title'>Hi My name is!</h1>
-              <h4 className='text-5xl font-title mt-3'>Verawood Langvong</h4>
-              <h6 className='mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
-              <h6>A fast learner committed to building high-quality web solutions.</h6>
-              <h6>Ready to adapt and bring my best to Company as an intern.</h6>
+              <h1 className='text-4xl text-white font-thin'>Hi My name is!</h1>
+              <h4 className='text-5xl text-white font-title mt-3'>Verawood Langvong</h4>
+              <h6 className='mt-5 text-white'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
+              <h6 className='text-white'>A fast learner committed to building high-quality web solutions.</h6>
+              <h6 className='text-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
               <div className='flex'>
                 <a 
                 href=""
@@ -87,7 +87,7 @@ export default function Main() {
                   </button>
                 </Link> */}
                 <Link to="About" className="flex items-center mt-2 ml-4 ">
-                  <button className="mt-5  border- border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
+                  <button className="mt-5  border-2 border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
                     <span className="mr-2">ABOUT ME</span>
                     <FontAwesomeIcon icon={faArrowRight} />
                   </button>
@@ -95,22 +95,22 @@ export default function Main() {
               </div>
               <div className='flex mt-2 gap-5'>
                 <a href="https://www.instagram.com/febj_222/" target="_blank" rel="noopener noreferrer">
-                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
+                  <button className="mt-5 border-2  border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faInstagram} size="2x" />
                   </button>
                 </a>
                 <a href="https://www.facebook.com/veerawood.langvong/" target="_blank" rel="noopener noreferrer">
-                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 w-12 h-12 flex items-center justify-center rounded-full">
+                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faFacebook} size="2x" />
                   </button>
                 </a>
                 <a href="https://github.com/JeenVerawood" target="_blank" rel="noopener noreferrer">
-                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 w-12 h-12 flex items-center justify-center rounded-full">
+                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faGithub} size="2x" />
                   </button>
                 </a>
                 <a href="https://line.me/ti/p/PVnlFqB1tZ" target="_blank" rel="noopener noreferrer">
-                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 w-12 h-12 flex items-center justify-center rounded-full">
+                  <button className="mt-5 border-2 border-gray-400 duration-200 hover:scale-110 text-white w-12 h-12 flex items-center justify-center rounded-full">
                     <FontAwesomeIcon icon={faLine} size="2x" />
                   </button>
                 </a>
@@ -125,7 +125,7 @@ export default function Main() {
               <h4 className='text-5xl font-title mt-3'>Verawood Langvong</h4>
               <h6 className='mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
               <h6>A fast learner committed to building high-quality web solutions.</h6>
-              <h6>Ready to adapt and bring my best to Company as an intern.</h6>
+              <h6 className='-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
             </div>
             <Link to="About" className="flex items-center justify-center w-full">
               <button className="bg-white text-black px-4 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
@@ -138,11 +138,11 @@ export default function Main() {
         {!isMobile && (
           <div className="w-2/4 h-[92%] flex items-center justify-end mb-20">
             <div
-              className="w-96 h-96 absolute border-2 border-gray-400 p-4 scale-110 duration-200 transition-all"
+              className="w-96 h-96 absolute border-2 border-sky-500 p-4 scale-110 duration-200 transition-all"
               style={{ transform: `rotate(${rotation1}deg)` }}
             ></div>
             <div
-              className="w-96 h-96 absolute border-2 border-gray-400 p-4 duration-200 transition-all"
+              className="w-96 h-96 absolute border-2 border-sky-500 p-4 duration-200 transition-all"
               style={{ transform: `rotate(${rotation2}deg)` }}
             ></div>
             <div className="Boxciecleimg w-96 h-96 bg-neutral-500 rounded-full overflow-hidden ">

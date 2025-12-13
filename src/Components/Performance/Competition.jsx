@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Window/Footer';
-import { FaSearchPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-
+import { FaSearchPlus, FaArrowLeft, FaArrowRight, FaTimes } from 'react-icons/fa';
 import Img1 from '../img-main/cetificate/DDD.png'; 
 import Img2 from '../img-main/cetificate/CamScanner 26-08-2566 21.30_2.jpg';
 import Img3 from '../img-main/cetificate/CamScanner 26-08-2566 21.30_4.jpg';
@@ -120,6 +119,8 @@ const contentBlocks = [
 export default function Technology() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
 
     const openModal = (imageSrc, index) => {
         setSelectedImage(imageSrc);
@@ -131,98 +132,151 @@ export default function Technology() {
         setCurrentIndex(null);
     };
 
-    const goToNextImage = () => {
+    const goToNextImage = (e) => {
+        e.stopPropagation();
         const nextIndex = currentIndex === contentBlocks.length - 1 ? 0 : currentIndex + 1;
         setCurrentIndex(nextIndex);
         setSelectedImage(contentBlocks[nextIndex].imageSrc);
     };
 
-    const goToPrevImage = () => {
+    const goToPrevImage = (e) => {
+        e.stopPropagation();
         const prevIndex = currentIndex === 0 ? contentBlocks.length - 1 : currentIndex - 1;
         setCurrentIndex(prevIndex);
         setSelectedImage(contentBlocks[prevIndex].imageSrc);
     };
 
+    // แยก Animation หน้าเว็บให้รันครั้งเดียว
     useEffect(() => {
-        document.body.style.overflow = selectedImage ? 'hidden' : 'auto';
+        setIsVisible(true);
+    }, []);
+
+    // จัดการเรื่อง Scroll lock และปุ่ม Escape
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') closeModal();
+        };
+
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden';
+            window.addEventListener('keydown', handleKeyDown);
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
         return () => {
             document.body.style.overflow = 'auto';
+            window.removeEventListener('keydown', handleKeyDown);
         };
     }, [selectedImage]);
-
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []);
 
     return (
         <>
             <Navbar />
-            <div className="bg-gradient-to-r md:h-auto font-title from-black to-blue-950">
-                <div className="flex flex-col justify-center items-center text-white max-w-7xl m-auto p-12 h-full transition-all duration-500">
-                    <div className="flex justify-center gap-x-3 items-center">
-                        <div className="w-2 h-2 bg-white rotate-45"></div>
-                        <h1 className="text-3xl font-bold transition-opacity text-center duration-500">COMPUTER ACHIEVEMENTS</h1>
-                        <div className="w-2 h-2 bg-white rotate-45"></div>
+            <div className="bg-gray-900 min-h-screen font-title text-white">
+                <div 
+                    ref={sectionRef}
+                    className={`max-w-7xl m-auto px-6 py-20 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                >
+                    {/* Header Section */}
+                    <div className="flex flex-col items-center mb-16">
+                        <div className="flex justify-center gap-x-3 items-center">
+                            <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
+                            <h1 className="text-3xl md:text-4xl font-bold tracking-widest uppercase text-center">Computer Achievements</h1>
+                            <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
+                        </div>
+                        <p className="mt-4 text-gray-400 text-xs md:text-sm uppercase text-center">
+                            A collection of my academic and technical accomplishments
+                        </p>
                     </div>
-                    <div className="text-center mb-10">
-                        <h5 className="mt-3">SUB HEADING GOES HERE</h5>
-                    </div>
-                    <div className="grid place-content-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    {/* Achievements Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {contentBlocks.map((block, index) => (
-                            <div key={index} className="relative border-2 border-gray-400 p-4 h-auto hover:scale-105 duration-500">
-                                <div className="w-full h-60 bg-white overflow-hidden relative bg-black group hover:opacity-80 duration-500">
-                                    <img src={block.imageSrc} alt={block.title} className="w-full h-full object-cover" />
+                            <div 
+                                key={index} 
+                                className="group bg-gray-800/40 border border-gray-700 p-4 hover:border-sky-500 transition-all duration-500 flex flex-col"
+                            >
+                                <div className="relative aspect-[4/3] overflow-hidden bg-black mb-4 group">
+                                    <img 
+                                        src={block.imageSrc} 
+                                        alt={block.title} 
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" 
+                                    />
                                     <div 
-                                        className="absolute bottom-3 right-3 text-white text-xl bg-gray-900 p-3 rounded-full opacity-0 group-hover:opacity-100 border-2 border-white duration-300 cursor-pointer"
+                                        className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer"
                                         onClick={() => openModal(block.imageSrc, index)}
                                     >
-                                        <FaSearchPlus />
+                                        <div className="bg-sky-500 p-4 rounded-full text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                            <FaSearchPlus size={24} />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center mt-2 justify-evenly">
-                                    <div className="w-2 h-2 bg-white rotate-45"></div>
-                                    <h1 className="text-xl font-bold text-center">{block.title}</h1>
-                                    <div className="w-2 h-2 bg-white rotate-45"></div>
+
+                                <div className="flex-grow flex flex-col justify-center text-center">
+                                    <h2 className="text-lg font-bold tracking-wide uppercase text-white group-hover:text-sky-400 transition-colors duration-300">
+                                        {block.title}
+                                    </h2>
+                                    <div className="w-10 h-[2px] bg-gray-700 mx-auto my-3 group-hover:w-20 group-hover:bg-sky-500 transition-all duration-500"></div>
+                                    <p className="text-sm text-gray-400 leading-relaxed italic">
+                                        {block.description}
+                                    </p>
                                 </div>
-                                <p className="text-center mt-2">{block.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
 
+            {/* Lightbox / Modal */}
             {selectedImage && (
-                <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center">
-                <div className="relative max-w-7xl">
+                <div 
+                    className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex justify-center items-center p-4 md:p-10"
+                    onClick={closeModal}
+                >
                     <button 
-                        onClick={closeModal} 
-                        className="absolute top-5 right-5 text-white text-2xl bg-black/60 px-2 py-1 rounded-full focus:outline-none"
-                        aria-label="Close modal"
+                        className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-[110]"
+                        onClick={closeModal}
                     >
-                        &times;
+                        <FaTimes size={32} />
                     </button>
-                    <img src={selectedImage} alt="Enlarged" className="max-w-[80%] max-h-[80%] m-auto rounded-lg shadow-lg" />
-                    <div className="text-center text-white mt-4">
-                        <p>{contentBlocks[currentIndex].description}</p>
-                    </div>
-                    <div className="absolute top-1/2 left-5 transform -translate-y-1/2">
-                        <button onClick={goToPrevImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
-                            <FaArrowLeft />
+
+                    <div className="relative w-full max-w-5xl flex flex-col items-center">
+                        <button 
+                            onClick={goToPrevImage} 
+                            className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 text-white/30 hover:text-sky-400 transition-colors p-4"
+                        >
+                            <FaArrowLeft size={40} />
                         </button>
-                    </div>
-                    <div className="absolute top-1/2 right-5 transform -translate-y-1/2">
-                        <button onClick={goToNextImage} className="text-white text-3xl bg-black/60 p-2 rounded-full">
-                            <FaArrowRight />
+
+                        <img 
+                            src={selectedImage} 
+                            alt="Enlarged" 
+                            className="max-h-[70vh] object-contain shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()} 
+                        />
+
+                        <div className="mt-8 text-center max-w-2xl" onClick={(e) => e.stopPropagation()}>
+                            <h3 className="text-sky-400 font-bold text-xl uppercase tracking-wider mb-2">
+                                {contentBlocks[currentIndex].title}
+                            </h3>
+                            <p className="text-gray-300 text-base italic leading-relaxed">
+                                {contentBlocks[currentIndex].description}
+                            </p>
+                            {/* แก้ไข Tag ปิดตรงนี้ */}
+                            <div className="mt-4 text-gray-600 text-xs">
+                                {currentIndex + 1} / {contentBlocks.length}
+                            </div> 
+                        </div>
+
+                        <button 
+                            onClick={goToNextImage} 
+                            className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 text-white/30 hover:text-sky-400 transition-colors p-4"
+                        >
+                            <FaArrowRight size={40} />
                         </button>
                     </div>
                 </div>
-            </div>
             )}
             
             <Footer />

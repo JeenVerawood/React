@@ -1,96 +1,119 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { IoGameController } from "react-icons/io5";
-import { FaConnectdevelop } from "react-icons/fa";
-import { TbWorldCode } from "react-icons/tb";
+import { 
+  FaCode, FaServer, FaDatabase, FaTools, 
+  FaRobot, FaUserCheck, FaChevronRight 
+} from 'react-icons/fa';
 
 export default function Lorem() {
-    const contactRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    const [showTexts, setShowTexts] = useState([false, false, false]); // Array to manage visibility of each text block
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const { top, height } = contactRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
+  // ข้อมูล Skills แบ่งตามหมวดหมู่
+  const skillCategories = [
+    {
+      title: "Frontend",
+      icon: <FaCode className="text-sky-400" />,
+      skills: ["React.js", "Next.js", "Vue.js", "Tailwind CSS"]
+    },
+    {
+      title: "Backend",
+      icon: <FaServer className="text-emerald-400" />,
+      skills: ["Node.js", "Express.js", "RESTful APIs", "Python (Scraping)", "C++"]
+    },
+    {
+      title: "Database System",
+      icon: <FaDatabase className="text-amber-400" />,
+      skills: ["PostgreSQL", "MongoDB"]
+    },
+    {
+      title: "Tools & Design",
+      icon: <FaTools className="text-rose-400" />,
+      skills: ["Git / GitHub", "Docker", "Postman", "Figma (UI/UX)"]
+    },
+    {
+      title: "Other Interests",
+      icon: <FaRobot className="text-indigo-400" />,
+      skills: ["Arduino", "Robotics", "Basic AI Model"]
+    }
+  ];
 
-            if (top < windowHeight && top + height > 0) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
+  const softSkills = [
+    "Strong Communication", "Teamwork & Collaboration", 
+    "Adaptability & Learning", "Analytical Mindset"
+  ];
 
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const toggleText = (index) => {
-        const updatedShowTexts = [...showTexts];
-        updatedShowTexts[index] = !updatedShowTexts[index]; // Toggle the visibility for the specific index
-        setShowTexts(updatedShowTexts);
-    };
-
-    return (
-        <div className='bg-gradient-to-r from-black to-blue-950 font-title'>
-            <div 
-                ref={contactRef} 
-                className={`flex flex-col  justify-center items-center ${isMobile ? 'h-auto' : 'h-screen'} text-white max-w-7xl m-auto p-12 text-center transition-all duration-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-            >
-                <div className="Header flex items-center gap-x-3">
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
-                    <h1 className={`text-3xl font-bold transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>WHY I LIKE COMPUTER?</h1>
-                    <div className='w-2 h-2 bg-white rotate-45'></div>
-                </div>
-                <h5 className={`mt-3 transition-opacity duration-500 ${isVisible ? 'opacity-100 delay-100' : 'opacity-0'}`}>SUB HEADING GOES HERE</h5>
-                
-                <div className={`w-full flex ${isMobile ? 'flex-col  gap-y-5' : 'justify-around'} mt-12 `}>
-                    {[ 
-                        {
-                            icon: <IoGameController className='m-auto my-10 text-9xl' />,
-                            text: "I started by coding to create a game server, which sparked my interest in learning about computers and various programming languages."
-                        },
-                        {
-                            icon: <FaConnectdevelop className='m-auto my-10 text-9xl' />,
-                            text: "Careers related to computers are timeless, as long as the world keeps turning. Computers will continue to drive the development of our world"
-                        },
-                        {
-                            icon: <TbWorldCode className='m-auto my-10 text-9xl' />,
-                            text: "Studying about computer  enables me to pursue a successful and stable career, while also contributing positively to the nation."
-                        }
-                    ].map((item, index) => (
-                        <div key={index} className={`flex-1 text-center border-2 border-gray-400 p-4 transition-opacity duration-500 ${isVisible ? 'opacity-100 delay-' + (400 + index * 200) : 'opacity-0'} mx-2`}>
-                            {item.icon}
-                            {isMobile ? (
-                                <>
-                                    <button onClick={() => toggleText(index)} className=' border-2 border-gray-400 text-white p-1 '>
-                                        {showTexts[index] ? 'Show Less' : 'Show More'}
-                                    </button>
-                                    {showTexts[index] && (
-                                        <h4 className='mt-3'>
-                                            {item.text}
-                                        </h4>
-                                    )}
-                                </>
-                            ) : (
-                                <h4>
-                                    {item.text}
-                                </h4>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
     );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className='bg-gray-900 min-h-screen font-title py-20 flex items-center'>
+      <div 
+        ref={sectionRef}
+        className={`max-w-7xl m-auto px-6 md:px-12 w-full transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
+      >
+        {/* Header */}
+        <div className='flex flex-col items-center mb-16'>
+          <div className='flex justify-center gap-x-3 items-center'>
+            <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
+            <h1 className='text-3xl md:text-4xl font-bold uppercase tracking-widest text-white'>Skills & Expertise</h1>
+            <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
+          </div>
+          <p className='text-gray-400 mt-4 tracking-widest text-sm uppercase'>My Technical Stack & Core Competencies</p>
+        </div>
+
+        {/* Skills Grid */}
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {skillCategories.map((cat, idx) => (
+            <div 
+              key={idx}
+              className='bg-gray-800/40 border-2 border-gray-700 p-6 rounded-sm hover:border-sky-500 transition-all duration-500 group'
+            >
+              <div className='flex items-center gap-4 mb-6'>
+                <div className='p-3 bg-gray-900 border border-gray-600 group-hover:border-sky-500 transition-colors'>
+                  {cat.icon}
+                </div>
+                <h3 className='text-xl font-bold text-white uppercase tracking-tight'>{cat.title}</h3>
+              </div>
+              <div className='flex flex-wrap gap-2'>
+                {cat.skills.map((skill, sIdx) => (
+                  <span 
+                    key={sIdx}
+                    className='px-3 py-1 bg-gray-900 text-gray-300 text-xs border border-gray-600 rounded-full hover:text-white hover:border-sky-400 transition-all'
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {/* Soft Skills Card (Special Style) */}
+          <div className='bg-gradient-to-br from-sky-600/20 to-indigo-600/20 border-2 border-sky-500/50 p-6 rounded-sm'>
+            <div className='flex items-center gap-4 mb-6'>
+              <div className='p-3 bg-sky-500 text-white'>
+                <FaUserCheck />
+              </div>
+              <h3 className='text-xl font-bold text-white uppercase tracking-tight'>Soft Skills</h3>
+            </div>
+            <ul className='space-y-3'>
+              {softSkills.map((skill, idx) => (
+                <li key={idx} className='flex items-center text-gray-200 text-sm'>
+                  <FaChevronRight className='text-sky-500 mr-2 text-xs' />
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
