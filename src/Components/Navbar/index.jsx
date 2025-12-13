@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaUser, FaBars, FaTimes, FaChevronDown } from "react-icons/fa"; // เพิ่ม Chevron
-import { Link, useLocation } from "react-router-dom"; // เพิ่ม useLocation เพื่อทำ Active Link
+import { FaUser, FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 import { GiSkills, GiChampions } from "react-icons/gi";
 import { MdCastForEducation, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { TiUser } from "react-icons/ti";
@@ -10,137 +10,160 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
     const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-    const [isPerfDropdownOpen, setIsPerfDropdownOpen] = useState(false);
+    const [isCertDropdownOpen, setIsCertDropdownOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    
     const location = useLocation();
     let lastScrollY = window.scrollY;
 
     useEffect(() => {
         const handleScroll = () => {
-            // เช็คว่าสกรูลลงหรือขึ้นเพื่อซ่อน/แสดง Navbar
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            const currentScrollY = window.scrollY;
+            
+            // ซ่อน/แสดง Nav ตามการเลื่อน
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setIsVisible(false);
             } else {
                 setIsVisible(true);
             }
-            // เช็คว่าสกรูลลงมาแล้วหรือยังเพื่อเปลี่ยนสีพื้นหลังให้ทึบขึ้น
-            setIsScrolled(window.scrollY > 20);
-            lastScrollY = window.scrollY;
+            
+            // เช็คการเลื่อนเพื่อปรับความทึบของพื้นหลัง
+            setIsScrolled(currentScrollY > 20);
+            lastScrollY = currentScrollY;
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Helper สำหรับเช็คหน้าปัจจุบันเพื่อทำสีเน้น (Active State)
+    // เช็คว่าหน้าไหนกำลังเปิดอยู่
     const isActive = (path) => location.pathname === path;
 
     return (
-        <div className={`fixed w-full top-0 z-50 transition-all duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'bg-gray-900/90 backdrop-blur-md shadow-xl' : 'bg-transparent'}`}>
-            <nav className="flex justify-between items-center text-white py-4 px-8 max-w-7xl mx-auto">
-                
-                {/* Logo Section */}
-                <Link to="/" className="flex items-center group">
-                    <div className="w-8 h-8 bg-sky-500 flex items-center justify-center mr-2 rounded-lg text-white group-hover:rotate-12 transition-transform">
-                        <TiUser size={20}/>
-                    </div>
-                    <MdKeyboardDoubleArrowRight className="text-sky-500 mr-1"/>
-                    <h1 className="text-xl font-bold tracking-tighter">VERAWOOD<span className="text-sky-500">.</span></h1>
-                </Link>
-
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center space-x-2">
-                    <Link to="/" className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${isActive('/') ? 'text-sky-400' : 'hover:text-sky-400'}`}>
-                        MAIN
+        <div className={`fixed w-full top-0 z-[100] transition-all duration-500 ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'py-2' : 'py-4'}`}>
+            <nav className={`mx-auto max-w-6xl px-6 py-3 rounded-full transition-all duration-500 border border-white/10 ${isScrolled ? 'bg-gray-900/80 backdrop-blur-xl shadow-2xl' : 'bg-transparent'}`}>
+                <div className="flex justify-between items-center text-white">
+                    
+                    {/* Logo Section */}
+                    <Link to="/" className="flex items-center group">
+                        <div className="w-9 h-9 bg-sky-500 flex items-center justify-center rounded-xl text-white group-hover:rotate-[15deg] transition-all duration-300 shadow-lg shadow-sky-500/20">
+                            <TiUser size={22} />
+                        </div>
+                        <div className="ml-3 overflow-hidden">
+                            <h1 className="text-xl font-black tracking-tighter leading-none group-hover:text-sky-400 transition-colors">VERAWOOD<span className="text-sky-500">.</span></h1>
+                            <p className="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Portfolio</p>
+                        </div>
                     </Link>
 
-                    {/* PERFORMANCE Dropdown */}
-                    <div
-                        className="relative"
-                        onMouseEnter={() => setIsPerfDropdownOpen(true)}
-                        onMouseLeave={() => setIsPerfDropdownOpen(false)}
-                    >
-                        <button className="flex items-center gap-x-1 px-4 py-2 text-sm font-medium hover:text-sky-400 transition-colors">
-                            PERFORMANCE <FaChevronDown size={10} className={`transition-transform ${isPerfDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        <AnimatePresence>
-                            {isPerfDropdownOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                                    className="absolute top-full left-0 w-48 bg-gray-900 border border-gray-800 rounded-xl mt-2 py-2 shadow-2xl"
-                                >
-                                    <DropdownLink to="/Competition" icon={<GiChampions />} label="ACADEMIC" />
-                                    <DropdownLink to="/Camp" icon={<FaCampground />} label="OTHER" />
-                                    <DropdownLink to="/Design" icon={<MdCastForEducation />} label="DESIGN" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center space-x-2">
+                        <NavLink to="/" label="MAIN" active={isActive('/')} />
+
+                        {/* Performance Dropdown */}
+                        <div className="relative group" onMouseEnter={() => setIsCertDropdownOpen(true)} onMouseLeave={() => setIsCertDropdownOpen(false)}>
+                            <button className={`px-4 py-2 text-sm font-bold flex items-center gap-2 hover:text-sky-400 transition-colors ${location.pathname.includes('Competition') || location.pathname.includes('Camp') ? 'text-sky-400' : ''}`}>
+                                PERFORMANCE <FaChevronDown size={10} className={`transition-transform duration-300 ${isCertDropdownOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                            <AnimatePresence>
+                                {isCertDropdownOpen && (
+                                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }}
+                                        className="absolute top-full left-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/50"
+                                    >
+                                        <DropdownItem to="/Competition" icon={<GiChampions />} label="Academic" />
+                                        <DropdownItem to="/Camp" icon={<FaCampground />} label="Other" />
+                                        <DropdownItem to="/Myproject" icon={<GoProjectRoadmap />} label="Project" />
+                                        <DropdownItem to="/Design" icon={<MdCastForEducation />} label="Design" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        {/* About Dropdown */}
+                        <div className="relative group" onMouseEnter={() => setIsAboutDropdownOpen(true)} onMouseLeave={() => setIsAboutDropdownOpen(false)}>
+                            <button className={`px-4 py-2 text-sm font-bold flex items-center gap-2 hover:text-sky-400 transition-colors ${location.pathname.includes('Personal') || location.pathname.includes('Education') ? 'text-sky-400' : ''}`}>
+                                ABOUT <FaChevronDown size={10} className={`transition-transform duration-300 ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                            <AnimatePresence>
+                                {isAboutDropdownOpen && (
+                                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }}
+                                        className="absolute top-full left-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/50"
+                                    >
+                                        <DropdownItem to="/Personal" icon={<FaUser />} label="Personal Info" />
+                                        <DropdownItem to="/Education" icon={<MdCastForEducation />} label="Education" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        <Link to="/Contact" className="ml-4 bg-white text-black px-6 py-2 rounded-full text-xs font-black hover:bg-sky-500 hover:text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transform hover:scale-105">
+                            CONTACT
+                        </Link>
                     </div>
 
-                    {/* ABOUT Dropdown */}
-                    <div
-                        className="relative"
-                        onMouseEnter={() => setIsAboutDropdownOpen(true)}
-                        onMouseLeave={() => setIsAboutDropdownOpen(false)}
-                    >
-                        <button className="flex items-center gap-x-1 px-4 py-2 text-sm font-medium hover:text-sky-400 transition-colors">
-                            ABOUT <FaChevronDown size={10} className={`transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                        <AnimatePresence>
-                            {isAboutDropdownOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                                    className="absolute top-full left-0 w-48 bg-gray-900 border border-gray-800 rounded-xl mt-2 py-2 shadow-2xl"
-                                >
-                                    <DropdownLink to="/Personal" icon={<FaUser />} label="PERSONAL" />
-                                    <DropdownLink to="/Education" icon={<MdCastForEducation />} label="EDUCATION" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-
-                    <Link to="/Contact" className="ml-4 bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded-full text-sm font-bold transition-all hover:shadow-[0_0_15px_rgba(14,165,233,0.5)]">
-                        CONTACT
-                    </Link>
+                    {/* Mobile Toggle */}
+                    <button className="md:hidden w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl border border-white/10" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                        {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+                    </button>
                 </div>
 
-                {/* Mobile Menu Toggle */}
-                <button className="md:hidden text-white p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                </button>
-            </nav>
-
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div 
-                        initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-gray-900 border-t border-gray-800 overflow-hidden"
-                    >
-                        <div className="flex flex-col p-6 space-y-4 text-center">
-                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>MAIN</Link>
-                            <div className="border-t border-gray-800 pt-4">
-                                <p className="text-gray-500 text-xs mb-4">PERFORMANCE</p>
-                                <div className="grid grid-cols-2 gap-2">
-                                    <Link to="/Competition" className="text-sm py-2 bg-gray-800 rounded">ACADEMIC</Link>
-                                    <Link to="/Camp" className="text-sm py-2 bg-gray-800 rounded">OTHER</Link>
+                {/* Mobile Menu Overlay */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                            className="md:hidden text-white overflow-hidden"
+                        >
+                            <div className="pt-6 pb-4 flex flex-col space-y-2">
+                                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="p-4 bg-white/5 rounded-2xl font-bold">MAIN</Link>
+                                <div className="p-4 bg-white/5 rounded-2xl">
+                                    <p className="text-[10px] text-gray-500 font-bold tracking-widest mb-3 uppercase">Performance</p>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <MobileLink to="/Competition" label="Academic" />
+                                        <MobileLink to="/Camp" label="Other" />
+                                        <MobileLink to="/Myproject" label="Project" />
+                                        <MobileLink to="/Design" label="Design" />
+                                    </div>
                                 </div>
+                                <div className="p-4 bg-white/5 rounded-2xl">
+                                    <p className="text-[10px] text-gray-500 font-bold tracking-widest mb-3 uppercase">About</p>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <MobileLink to="/Personal" label="Personal" />
+                                        <MobileLink to="/Education" label="Education" />
+                                    </div>
+                                </div>
+                                <Link to="/Contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-sky-600 p-4 rounded-2xl text-center font-bold shadow-lg shadow-sky-500/20">CONTACT ME</Link>
                             </div>
-                            <Link to="/Contact" className="bg-sky-600 py-3 rounded-full font-bold">CONTACT</Link>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </nav>
         </div>
     );
 }
 
-// Sub-component สำหรับ Dropdown Links เพื่อลดความซ้ำซ้อน
-function DropdownLink({ to, icon, label }) {
+// Sub-components
+function NavLink({ to, label, active }) {
     return (
-        <Link to={to} className="flex items-center gap-x-3 px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-sky-600 transition-colors">
-            <span className="text-sky-400 group-hover:text-white">{icon}</span>
+        <Link to={to} className={`relative px-4 py-2 text-sm font-bold transition-all duration-300 group ${active ? 'text-sky-400' : 'text-white hover:text-sky-400'}`}>
+            {label}
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] bg-sky-500 transition-all duration-300 ${active ? 'w-4' : 'w-0 group-hover:w-4'}`}></span>
+        </Link>
+    );
+}
+
+function DropdownItem({ to, icon, label }) {
+    return (
+        <Link to={to} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sky-600 transition-all duration-300 group">
+            <span className="text-sky-500 group-hover:text-white transition-colors">{icon}</span>
+            <span className="text-sm font-bold text-gray-300 group-hover:text-white transition-colors">{label}</span>
+        </Link>
+    );
+}
+
+function MobileLink({ to, label }) {
+    return (
+        <Link to={to} className="p-2 bg-gray-900 border border-white/5 rounded-xl text-xs text-center font-bold">
             {label}
         </Link>
     );

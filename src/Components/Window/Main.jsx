@@ -80,12 +80,6 @@ export default function Main() {
                     <FaAngleDown />
                   </button>
                 </a>
-                {/* <Link to="About" className="flex items-center mt-2">
-                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
-                    <span className="mr-2">RESUME</span>
-                    <FaAngleDown />
-                  </button>
-                </Link> */}
                 <Link to="About" className="flex items-center mt-2 ml-4 ">
                   <button className="mt-5  border-2 border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
                     <span className="mr-2">ABOUT ME</span>
@@ -121,18 +115,30 @@ export default function Main() {
         {(isMobile) && (
           <div className="flex flex-col justify-center items-center h-screen">
             <div className="text-center mb-5">
-              <h1 className='text-4xl font-title'>Hi My name is!</h1>
-              <h4 className='text-5xl font-title mt-3'>Verawood Langvong</h4>
-              <h6 className='mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
-              <h6>A fast learner committed to building high-quality web solutions.</h6>
-              <h6 className='-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
+              <h1 className='text-4xl text-white '>Hi My name is!</h1>
+              <h4 className='text-5xl text-white font-title mt-3'>Verawood Langvong</h4>
+              <h6 className='text-white mt-5'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
+              <h6 className='text-white'>A fast learner committed to building high-quality web solutions.</h6>
+              <h6 className='text-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
             </div>
-            <Link to="About" className="flex items-center justify-center w-full">
-              <button className="bg-white text-black px-4 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
-                <span className="mr-2">ABOUT ME</span>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </button>
-            </Link>
+            <div className='flex'>
+                <a 
+                href=""
+                download=""
+                className="flex items-center mt-2"
+                >
+                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                    <span className="mr-2">RESUME</span>
+                    <FaAngleDown />
+                  </button>
+                </a>
+                <Link to="About" className="flex items-center mt-2 ml-4 ">
+                  <button className="mt-5 text-sm border-2 border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
+                    <span className="mr-2">ABOUT ME</span>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                </Link>
+              </div>
           </div>
         )}
         {!isMobile && (
