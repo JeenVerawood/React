@@ -43,7 +43,14 @@ export default function Navbar() {
 
     return (
         <div className={`fixed w-full top-0 z-[100] transition-all duration-500 ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'py-2' : 'py-4'}`}>
-            <nav className={`mx-auto max-w-6xl px-6 py-3 rounded-full transition-all duration-500 border border-white/10 ${isScrolled ? 'bg-gray-900/80 backdrop-blur-xl shadow-2xl' : 'bg-transparent'}`}>
+            <nav className={`
+                    mx-auto transition-all duration-500 
+                    /* ลบ bg-transparent ออก และใส่สีทึบไปเลย */
+                    bg-gray-900 border-b border-white/10 py-4 px-6
+                    
+                    /* สไตล์สำหรับ Desktop (ทรงแคปซูลเมื่อเลื่อน) */
+                    ${isScrolled ? 'md:max-w-6xl md:mt-4 md:rounded-full md:border md:shadow-2xl' : 'md:max-w-full md:mt-0 md:rounded-none md:border-transparent'}
+                `}>
                 <div className="flex justify-between items-center text-white">
                     
                     {/* Logo Section */}
@@ -87,8 +94,13 @@ export default function Navbar() {
                             </button>
                             <AnimatePresence>
                                 {isAboutDropdownOpen && (
-                                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }}
-                                        className="absolute top-full left-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/50"
+                                   <motion.div 
+                                        initial={{ x: "100%" }} 
+                                        animate={{ x: 0 }} 
+                                        exit={{ x: "100%" }}
+                                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                                        /* ใช้ bg-gray-950 และ z-index สูงๆ เพื่อบังข้างหลังให้มิด */
+                                        className="fixed inset-0 z-[200] bg-gray-950 flex flex-col p-6 overflow-y-auto"
                                     >
                                         <DropdownItem to="/Personal" icon={<FaUser />} label="Personal Info" />
                                         <DropdownItem to="/Education" icon={<MdCastForEducation />} label="Education" />
@@ -112,10 +124,10 @@ export default function Navbar() {
                 <AnimatePresence>
                     {isMobileMenuOpen && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden text-white overflow-hidden"
+                            className="md:hidden text-white overflow-hidden bg-gray-900 rounded-lg p-2 "
                         >
-                            <div className="pt-6 pb-4 flex flex-col space-y-2">
-                                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="p-4 bg-white/5 rounded-2xl font-bold">MAIN</Link>
+                            <div className="p-4 pb-4 flex flex-col space-y-2">
+                                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="p-4 bg-sky-500 rounded-2xl font-bold">MAIN</Link>
                                 <div className="p-4 bg-white/5 rounded-2xl">
                                     <p className="text-[10px] text-gray-500 font-bold tracking-widest mb-3 uppercase">Performance</p>
                                     <div className="grid grid-cols-2 gap-2">
@@ -131,7 +143,7 @@ export default function Navbar() {
                                         <MobileLink to="/Education" label="Education" />
                                     </div>
                                 </div>
-                                <Link to="/Contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-sky-600 p-4 rounded-2xl text-center font-bold shadow-lg shadow-sky-500/20">CONTACT ME</Link>
+                                <Link to="/Contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-white/5 p-4 rounded-2xl text-center font-bold">CONTACT ME</Link>
                             </div>
                         </motion.div>
                     )}

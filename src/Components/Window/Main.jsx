@@ -70,12 +70,16 @@ export default function Main() {
               <h6 className='text-white'>A fast learner committed to building high-quality web solutions.</h6>
               <h6 className='text-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
               <div className='flex gap-2'>
-                <a 
-                href=""
-                download="../Window/VERAWOOD LANGVONG/VERAWOOD LANGVONG.pdf"
-                className="flex items-center mt-2"
+
+               <a
+                  href="/src/Components/Window/resume/VERAWOOD LANGVONG.pdf"
+                  download = "VERAWOOD LANGVONG.pdf"
+                  className="flex items-center mt-2"
                 >
-                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                  <button
+                    type="button"
+                    className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300"
+                  >
                     <span className="mr-2">RESUME</span>
                     <FaAngleDown />
                   </button>
