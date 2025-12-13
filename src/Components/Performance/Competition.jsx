@@ -182,7 +182,7 @@ export default function Technology() {
                     <div className="flex flex-col items-center mb-16">
                         <div className="flex justify-center gap-x-3 items-center">
                             <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
-                            <h1 className="text-3xl md:text-4xl font-bold tracking-widest uppercase text-center">Computer Achievements</h1>
+                            <h1 className="text-3xl md:text-4xl font-bold uppercase text-center">Computer Achievements</h1>
                             <div className="w-2 h-2 bg-sky-500 rotate-45"></div>
                         </div>
                         <p className="mt-4 text-gray-400 text-xs md:text-sm uppercase text-center">

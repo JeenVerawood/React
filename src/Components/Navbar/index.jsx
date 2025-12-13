@@ -73,7 +73,6 @@ export default function Navbar() {
                                 >
                                     <DropdownLink to="/Competition" icon={<GiChampions />} label="ACADEMIC" />
                                     <DropdownLink to="/Camp" icon={<FaCampground />} label="OTHER" />
-                                    <DropdownLink to="/Myproject" icon={<GoProjectRoadmap />} label="PROJECT" />
                                     <DropdownLink to="/Design" icon={<MdCastForEducation />} label="DESIGN" />
                                 </motion.div>
                             )}
@@ -113,7 +112,6 @@ export default function Navbar() {
                 </button>
             </nav>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div 

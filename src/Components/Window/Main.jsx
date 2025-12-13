@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faGithub, faLine } from '@fortawesome/free-brands-svg-icons';
-import myImage from '../img-main/img1/MainPage.jpg';
+import myImage from '../img-main/img1/image.png';
 import { FaAngleDown } from "react-icons/fa";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -146,7 +146,7 @@ export default function Main() {
               style={{ transform: `rotate(${rotation2}deg)` }}
             ></div>
             <div className="Boxciecleimg w-96 h-96 bg-neutral-500 rounded-full overflow-hidden ">
-              {/* <img src={myImage} alt="My Image" className="w-full h-full object-cover" /> */}
+              <img src={myImage} alt="My Image" className="w-full scale-110 h-full object-cover" />
             </div>
           </div>
         )}

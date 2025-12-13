@@ -18,7 +18,7 @@ export default function Lorem() {
     {
       title: "Backend",
       icon: <FaServer className="text-emerald-400" />,
-      skills: ["Node.js", "Express.js", "RESTful APIs", "Python (Scraping)", "C++"]
+      skills: ["Node.js", "Express.js", "RESTful APIs", ,"Line API","Python (Scraping)", "C++"]
     },
     {
       title: "Database System",
@@ -54,7 +54,7 @@ export default function Lorem() {
   }, []);
 
   return (
-    <div className='bg-gray-900 min-h-screen font-title py-20 flex items-center'>
+    <div className='bg-gradient-to-r from-blue-950 to-black min-h-screen font-title py-20 flex items-center'>
       <div 
         ref={sectionRef}
         className={`max-w-7xl m-auto px-6 md:px-12 w-full transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}

@@ -29,17 +29,18 @@ export default function InternshipGoals() {
         {
             icon: <FaCode size={60} />,
             title: "Professional Mastery & Contribution",
-            desc: "My primary goal is to bridge the gap between academic theory and industry standards. I am eager to refine my coding and web development skills by actively contributing to real-world projects. Through effective teamwork and a commitment to high-quality code, I aim to provide meaningful value to the company’s objectives."
+            desc: "I aim to apply my technical skills in web development to build practical, scalable solutions. I am focused on writing clean, maintainable code and collaborating efficiently with the team to deliver reliable software that supports the company’s business goals."
         },
         {
             icon: <FaRocket size={60} />,
             title: "Innovation & Future Tooling",
-            desc: "Beyond day-to-day tasks, I am driven by a passion for solving complex problems and building the next generation of development tools. I seek to cultivate a growth mindset that allows me to transform emerging technologies into innovative solutions, eventually contributing to the advancement of the global developer community."
+            desc: "Beyond daily responsibilities, I am driven to understand deeper architectural problems. I strive to continuously upgrade my skills and apply modern technologies to create robust solutions, ensuring that technical improvements translate into tangible business value."
         }
     ];
 
     return (
-        <div className='bg-gray-900 font-title py-24 min-h-screen flex items-center overflow-hidden'>
+
+        <div className='bg-gradient-to-r from-black to-blue-950 font-title py-24 min-h-screen flex items-center overflow-hidden'>
             <div 
                 ref={contactRef} 
                 className={`max-w-6xl m-auto px-6 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}

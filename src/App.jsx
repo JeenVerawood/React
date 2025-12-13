@@ -5,14 +5,17 @@ import Comen from "./Components/Window/Comen";
 import Footer from "./Components/Window/Footer"
 import Navbar from "./Components/Navbar";
 import Hobby from "./Components/Window/Hobby";
+import MyProject from "./Components/Performance/Myproject"
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Main />  
-      <Lorem />
       <Experience />
+
+      <Lorem />
+      <MyProject />
       <Comen />
       <Hobby />
       <Footer />

@@ -7,6 +7,10 @@ import img1 from "../Performance/img1/1.png";
 import img2 from "../Performance/img1/2.png";
 import img3 from "../Performance/img1/3.png";
 import img4 from "../Performance/img1/4.png";
+import img5 from "../Performance/img1/imagenectec.png";
+import img6 from "../Performance/img1/Rebot.jpg"
+import img7 from "../Performance/img1/IMG_5001.jpg"
+
 
 export default function Experience() {
     const contactRef = useRef(null);
@@ -16,19 +20,12 @@ export default function Experience() {
 
     const experiences = [
         { img: img4, text: "Participate in research skills training at NSTDA at the NECTEC Center for 2 months." },
+        { img: img5, text: "Research Internship (NECTEC) (NSTDA) Speech and Text Understanding (STU) (Full Stack Developer)" },
         { img: img1, text: "Medal award from the regional SMTE project competition using the ARDUINO board." },
         { img: img2, text: "Silver Medal in the Arts and Crafts Competition in the Mixed Robot Competition." },
         { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        { img: img3, text: "Passed entry into the Junior Web Master Camp project, design category." },
-        // สามารถเพิ่ม { img: imgX, text: "..." } ต่อได้เลย กล่องจะเพิ่มให้อัตโนมัติ
+        { img: img6, text: "Ranked 11th in Manual Robot Control & Obstacle Course, 2023 Suvarnabhumi Robot Games" },
+        { img: img7, text: "The ICPC International Collegiate Programming Contest (ICPC) 2025 Staff " },
     ];
 
     const scroll = (direction) => {
@@ -61,7 +58,7 @@ export default function Experience() {
     };
 
     return (
-        <div className='bg-gradient-to-r from-blue-950 to-black min-h-screen font-title py-20 flex items-center overflow-hidden'>
+        <div className='bg-gray-900 min-h-screen font-title py-20 flex items-center overflow-hidden'>
             <div 
                 ref={contactRef} 
                 className={`flex flex-col text-white max-w-7xl m-auto px-6 md:px-12 w-full transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}

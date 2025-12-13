@@ -59,7 +59,7 @@ export default function Education() {
                     <div className='flex flex-col items-center mb-16'>
                         <div className='flex justify-center gap-x-3 items-center'>
                             <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
-                            <h1 className='text-3xl md:text-4xl font-bold tracking-widest text-white uppercase'>Education</h1>
+                            <h1 className='text-3xl md:text-4xl font-bold text-white uppercase'>Education</h1>
                             <div className='w-2 h-2 bg-sky-500 rotate-45'></div>
                         </div>
                         <p className='text-gray-400 mt-4  text-xs md:text-sm  uppercase'>Academic background and milestones</p>

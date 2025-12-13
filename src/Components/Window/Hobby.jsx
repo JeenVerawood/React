@@ -33,7 +33,7 @@ export default function TalentAndHobby() {
     ];
 
     return (
-        <div className='bg-gradient-to-r from-black to-blue-950 min-h-screen py-24 flex items-center overflow-hidden font-title'>
+        <div className='bg-gray-900 min-h-screen py-24 flex items-center overflow-hidden font-title'>
             <div 
                 ref={sectionRef} 
                 className={`max-w-7xl m-auto px-6 md:px-12 w-full transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
