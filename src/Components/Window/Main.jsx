@@ -69,7 +69,7 @@ export default function Main() {
               <h6 className='mt-5 text-white'>1st-year CEDT student at Chula & aspiring Full Stack Developer.</h6>
               <h6 className='text-white'>A fast learner committed to building high-quality web solutions.</h6>
               <h6 className='text-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
-              <div className='flex'>
+              <div className='flex gap-2'>
                 <a 
                 href=""
                 download=""
@@ -80,12 +80,17 @@ export default function Main() {
                     <FaAngleDown />
                   </button>
                 </a>
-                <Link to="About" className="flex items-center mt-2 ml-4 ">
-                  <button className="mt-5  border-2 border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
-                    <span className="mr-2">ABOUT ME</span>
-                    <FontAwesomeIcon icon={faArrowRight} />
+                <a
+                href="https://drive.google.com/file/d/1SoiFXi29Qf93TryZrUGP4fh32XOZ237s/view?usp=sharing"
+                target='blank'
+                download=""
+                className="flex items-center mt-2"
+                >
+                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                    <span className="mr-2">PORTFOLIO</span>
+                    <FaAngleDown />
                   </button>
-                </Link>
+                </a>
               </div>
               <div className='flex mt-2 gap-5'>
                 <a href="https://www.instagram.com/febj_222/" target="_blank" rel="noopener noreferrer">
@@ -121,7 +126,7 @@ export default function Main() {
               <h6 className='text-white'>A fast learner committed to building high-quality web solutions.</h6>
               <h6 className='text-sky-500'>Ready to adapt and bring my best to Company as an intern.</h6>
             </div>
-            <div className='flex'>
+            <div className='flex gap-2'>
                 <a 
                 href=""
                 download=""
@@ -132,12 +137,23 @@ export default function Main() {
                     <FaAngleDown />
                   </button>
                 </a>
-                <Link to="About" className="flex items-center mt-2 ml-4 ">
+                <a 
+                href="https://drive.google.com/file/d/1SoiFXi29Qf93TryZrUGP4fh32XOZ237s/view?usp=sharing"
+                target='blank'
+                download=""
+                className="flex items-center mt-2"
+                >
+                  <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
+                    <span className="mr-2">PORTFOLIO</span>
+                    <FaAngleDown />
+                  </button>
+                </a>
+                {/* <Link to="About" className="flex items-center mt-2 ml-4 ">
                   <button className="mt-5 text-sm border-2 border-gray-400  text-white px-4 py-2 rounded-full flex items-center focus:outline-none focus:ring focus:ring-white-300 hover:scale-110 duration-300">
                     <span className="mr-2">ABOUT ME</span>
                     <FontAwesomeIcon icon={faArrowRight} />
                   </button>
-                </Link>
+                </Link> */}
               </div>
           </div>
         )}
