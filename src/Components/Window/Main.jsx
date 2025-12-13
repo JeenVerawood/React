@@ -72,7 +72,7 @@ export default function Main() {
               <div className='flex gap-2'>
                 <a 
                 href=""
-                download=""
+                download="../Window/VERAWOOD LANGVONG/VERAWOOD LANGVONG.pdf"
                 className="flex items-center mt-2"
                 >
                   <button className="mt-5 bg-white text-black px-6 py-2 rounded-full flex items-center hover:bg-sky-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 hover:scale-110 duration-300">
