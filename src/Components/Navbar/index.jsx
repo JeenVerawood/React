@@ -121,7 +121,6 @@ export default function Navbar() {
                                     <div className="grid grid-cols-2 gap-2">
                                         <MobileLink to="/Competition" label="Academic" />
                                         <MobileLink to="/Camp" label="Other" />
-                                        <MobileLink to="/Myproject" label="Project" />
                                         <MobileLink to="/Design" label="Design" />
                                     </div>
                                 </div>
