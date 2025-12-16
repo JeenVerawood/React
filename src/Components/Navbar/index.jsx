@@ -71,8 +71,14 @@ export default function Navbar() {
                         {/* Performance Dropdown */}
                         <div className="relative group" onMouseEnter={() => setIsCertDropdownOpen(true)} onMouseLeave={() => setIsCertDropdownOpen(false)}>
                             <button className={`px-4 py-2 text-sm font-bold flex items-center gap-2 hover:text-sky-400 transition-colors ${location.pathname.includes('Competition') || location.pathname.includes('Camp') ? 'text-sky-400' : ''}`}>
-                                PERFORMANCE <FaChevronDown size={10} className={`transition-transform duration-300 ${isCertDropdownOpen ? 'rotate-180' : ''}`} />
+                                PERFORMANCE 
+                                <FaChevronDown 
+                                    size={10} 
+                                    /* เพิ่มเงื่อนไขตรงนี้ครับ: ถ้า isCertDropdownOpen เป็นจริง ให้หมุน 180 */
+                                    className={`transition-transform duration-300 ${isCertDropdownOpen ? 'rotate-180' : ''}`} 
+                                />
                             </button>
+                            
                             <AnimatePresence>
                                 {isCertDropdownOpen && (
                                     <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }}
@@ -80,7 +86,6 @@ export default function Navbar() {
                                     >
                                         <DropdownItem to="/Competition" icon={<GiChampions />} label="Academic" />
                                         <DropdownItem to="/Camp" icon={<FaCampground />} label="Other" />
-                                        <DropdownItem to="/Myproject" icon={<GoProjectRoadmap />} label="Project" />
                                         <DropdownItem to="/Design" icon={<MdCastForEducation />} label="Design" />
                                     </motion.div>
                                 )}
@@ -88,19 +93,20 @@ export default function Navbar() {
                         </div>
 
                         {/* About Dropdown */}
-                        <div className="relative group" onMouseEnter={() => setIsAboutDropdownOpen(true)} onMouseLeave={() => setIsAboutDropdownOpen(false)}>
+                       <div className="relative group" onMouseEnter={() => setIsAboutDropdownOpen(true)} onMouseLeave={() => setIsAboutDropdownOpen(false)}>
                             <button className={`px-4 py-2 text-sm font-bold flex items-center gap-2 hover:text-sky-400 transition-colors ${location.pathname.includes('Personal') || location.pathname.includes('Education') ? 'text-sky-400' : ''}`}>
                                 ABOUT <FaChevronDown size={10} className={`transition-transform duration-300 ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
                             <AnimatePresence>
                                 {isAboutDropdownOpen && (
-                                   <motion.div 
-                                        initial={{ x: "100%" }} 
-                                        animate={{ x: 0 }} 
-                                        exit={{ x: "100%" }}
-                                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                        /* ใช้ bg-gray-950 และ z-index สูงๆ เพื่อบังข้างหลังให้มิด */
-                                        className="fixed inset-0 z-[200] bg-gray-950 flex flex-col p-6 overflow-y-auto"
+                                    <motion.div 
+                                        // 1. แก้ไข Animation ให้เป็นการลอยขึ้นลง (เหมือน Performance)
+                                        initial={{ opacity: 0, y: 15 }} 
+                                        animate={{ opacity: 1, y: 0 }} 
+                                        exit={{ opacity: 0, y: 15 }}
+                                        
+                                        // 2. แก้ไข Class ให้เป็นกล่อง Dropdown ลอยตัว (absolute) ไม่ใช่เต็มจอ (fixed)
+                                        className="absolute top-full left-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/50"
                                     >
                                         <DropdownItem to="/Personal" icon={<FaUser />} label="Personal Info" />
                                         <DropdownItem to="/Education" icon={<MdCastForEducation />} label="Education" />

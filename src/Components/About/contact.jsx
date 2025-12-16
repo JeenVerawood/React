@@ -15,7 +15,7 @@ export default function Contact() {
 
     const professionalContacts = [
         { icon: faMobileAlt, label: "Phone Number", value: "083-057-2508", link: "tel:0830572508", color: "text-sky-400" },
-        { icon: faEnvelope, label: "Email Address", value: "Veraawoodlans@gmail.com", link: "mailto:Veraawoodlans@gmail.com", color: "text-emerald-400" }
+        { icon: faEnvelope, label: "Email Address", value: "Verawoodlans@gmail.com", link: "mailto:Veraawoodlans@gmail.com", color: "text-emerald-400" }
     ];
 
     const socialLinks = [
