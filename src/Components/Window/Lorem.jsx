@@ -13,7 +13,7 @@ export default function Lorem() {
     {
       title: "Frontend",
       icon: <FaCode className="text-sky-400" />,
-      skills: ["React.js", "Next.js", "Vue.js", "Tailwind CSS"]
+      skills: ["React.js", "Next.js", "Tailwind CSS"]
     },
     {
       title: "Backend",
@@ -33,7 +33,7 @@ export default function Lorem() {
     {
       title: "Other Interests",
       icon: <FaRobot className="text-indigo-400" />,
-      skills: ["Arduino", "Robotics", "Basic AI Model"]
+      skills: ["Arduino", "Robotics", "Basic AI Model(Yolo)"]
     }
   ];
 
