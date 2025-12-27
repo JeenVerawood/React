@@ -72,8 +72,9 @@ export default function Main() {
               <div className='flex gap-2'>
 
                <a
-                  href="/src/Components/Window/resume/Verawood_portFolio.pdf"
-                  download = "VERAWOOD LANGVONG.pdf"
+                  href="https://drive.google.com/file/d/1ImyOVSZkg6bkOWs6TfG8juB5AWL048VX/view?usp=drive_link"
+                  target='blank'
+                  download=""
                   className="flex items-center mt-2"
                 >
                   <button
